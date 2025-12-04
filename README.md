@@ -12,6 +12,7 @@
 ---
 
 ## 📹 Product Demo
+<img width="1687" height="803" alt="Screenshot 2025-12-04 at 3 48 42 PM" src="https://github.com/user-attachments/assets/f6de4b60-c861-472d-8e97-2089be45341d" />
 
 > *Watch Impetus2AI in action: From target acquisition to automated exploitation and reporting.*
 
