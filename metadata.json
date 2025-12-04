@@ -1,0 +1,5 @@
+{
+  "name": "Impetus2AI",
+  "description": "A containerized-style platform for managing AI-driven penetration testing sessions using Gemini.",
+  "requestFramePermissions": []
+}
