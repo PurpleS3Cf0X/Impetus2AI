@@ -19,12 +19,13 @@ import { Settings } from './components/Settings';
 import { SystemMonitor } from './components/SystemMonitor';
 import { ArtifactsView } from './components/ArtifactsView';
 import { ReportsView } from './components/ReportsView';
+import { Documentation } from './components/Documentation';
+import { ReportsManager } from './components/ReportsManager';
 import { streamPentestResponse, generateReport } from './services/geminiService';
 import { DEFAULT_SCENARIOS, DB_VERSION } from './data/defaultScenarios';
 
 // --- SVGs ---
 const IconPlus = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>;
-const IconServer = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 01-2 2v4a2 2 0 012 2h14a2 2 0 012-2v-4a2 2 0 01-2-2m-2-4h.01M17 16h.01" /></svg>;
 const IconTerminal = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>;
 const IconTrash = () => <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>;
 const IconEdit = () => <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>;
@@ -41,8 +42,11 @@ const IconHash = () => <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" 
 const IconCpu = () => <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>;
 const IconList = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>;
 const IconShieldCheck = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-const IconGlobe = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>;
 const IconDocumentText = () => <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>;
+const IconBook = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>;
+const IconClock = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
+const IconDocumentReport = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>;
+
 
 // MITRE Tactic & Technique Lookup
 const MITRE_DB: Record<string, { name: string, tactic: string }> = {
@@ -85,6 +89,12 @@ const Sidebar = ({ isCollapsed, toggleSidebar }: any) => {
       </div>
       <div className="flex-1" />
       <div className="p-4 border-t border-kali-700 space-y-2 bg-kali-800">
+        <Link to="/reports" onMouseEnter={(e) => handleMouseEnter(e, "Reports Library")} onMouseLeave={() => setTooltip(null)}>
+           <Button variant={isActive('/reports') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'}`}><IconDocumentReport />{!isCollapsed && <span>Reports Library</span>}</Button>
+        </Link>
+        <Link to="/docs" onMouseEnter={(e) => handleMouseEnter(e, "Documentation")} onMouseLeave={() => setTooltip(null)}>
+           <Button variant={isActive('/docs') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'}`}><IconBook />{!isCollapsed && <span>Documentation</span>}</Button>
+        </Link>
         <Link to="/settings" onMouseEnter={(e) => handleMouseEnter(e, "Settings")} onMouseLeave={() => setTooltip(null)}>
           <Button variant={isActive('/settings') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'}`}><IconSettings />{!isCollapsed && <span>Settings</span>}</Button>
         </Link>
@@ -464,6 +474,7 @@ const Dashboard = ({ sessions }: { sessions: PentestSession[] }) => {
 
 const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
     const navigate = useNavigate();
+    const [activeTab, setActiveTab] = useState<'active' | 'completed'>('active');
 
     const handleTerminate = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
@@ -477,6 +488,14 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
         }
     };
 
+    const filteredSessions = sessions.filter((s: PentestSession) => {
+      if (activeTab === 'active') {
+        return s.status === SessionStatus.RUNNING || s.status === SessionStatus.IDLE;
+      } else {
+        return s.status === SessionStatus.COMPLETED || s.status === SessionStatus.FAILED;
+      }
+    });
+
     return (
         <div className="max-w-7xl mx-auto mt-6">
              <div className="flex justify-between items-center mb-6">
@@ -489,10 +508,27 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
                 </Link>
             </div>
 
+            {/* Tab Navigation */}
+            <div className="flex gap-1 border-b border-kali-700 mb-6">
+                <button 
+                  onClick={() => setActiveTab('active')} 
+                  className={`px-4 py-2 text-sm font-medium flex items-center gap-2 border-b-2 transition-colors ${activeTab === 'active' ? 'border-kali-accent text-white' : 'border-transparent text-gray-400 hover:text-gray-200'}`}
+                >
+                  <IconTerminal /> Active Sessions
+                </button>
+                <button 
+                  onClick={() => setActiveTab('completed')} 
+                  className={`px-4 py-2 text-sm font-medium flex items-center gap-2 border-b-2 transition-colors ${activeTab === 'completed' ? 'border-kali-accent text-white' : 'border-transparent text-gray-400 hover:text-gray-200'}`}
+                >
+                  <IconClock /> Job History
+                </button>
+            </div>
+
              <div className="bg-kali-800 rounded-lg border border-kali-700 overflow-hidden shadow-xl">
                 <table className="w-full text-left border-collapse">
                     <thead>
                         <tr className="bg-kali-900 text-gray-400 text-xs uppercase tracking-wider border-b border-kali-700">
+                            <th className="p-4 font-medium">Job ID</th>
                             <th className="p-4 font-medium">Session Name</th>
                             <th className="p-4 font-medium">Target</th>
                             <th className="p-4 font-medium">MITRE Technique</th>
@@ -503,7 +539,7 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-kali-700">
-                        {sessions.map((s: PentestSession) => {
+                        {filteredSessions.map((s: PentestSession) => {
                             const mitreInfo = MITRE_DB[s.mitreId || ''];
                             return (
                             <tr 
@@ -511,6 +547,7 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
                                 className="hover:bg-kali-700/30 transition-colors cursor-pointer group"
                                 onClick={() => navigate(`/session/${s.id}`)}
                             >
+                                <td className="p-4 text-sm text-gray-500 font-mono text-xs">{s.id.substring(0,8)}</td>
                                 <td className="p-4 text-sm font-medium text-white flex items-center gap-3">
                                     <IconTerminal /> {s.name}
                                 </td>
@@ -556,8 +593,8 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
                                 </td>
                             </tr>
                         )})}
-                         {sessions.length === 0 && (
-                            <tr><td colSpan={7} className="p-8 text-center text-gray-500 italic">No active sessions. Start a new operation.</td></tr>
+                         {filteredSessions.length === 0 && (
+                            <tr><td colSpan={8} className="p-8 text-center text-gray-500 italic">No {activeTab} sessions found.</td></tr>
                         )}
                     </tbody>
                 </table>
@@ -746,6 +783,13 @@ export default function App() {
         ));
       }
   };
+  
+  // Logic to delete a report from the Global Reports Manager
+  const handleGlobalDeleteReport = (sessionId: string, reportId: string) => {
+      setSessions(prev => prev.map(s => 
+          s.id === sessionId ? { ...s, reports: s.reports.filter(r => r.id !== reportId) } : s
+      ));
+  };
 
   const handleSendMessage = async (sessionId: string, text: string, hidden = false) => {
     const session = sessions.find(s => s.id === sessionId);
@@ -844,6 +888,8 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Dashboard sessions={sessions} />} />
+          <Route path="/docs" element={<Documentation />} />
+          <Route path="/reports" element={<ReportsManager sessions={sessions} onDelete={handleGlobalDeleteReport} />} />
           <Route path="/sessions" element={<SessionManager sessions={sessions} onDelete={deleteSession} onTerminate={terminateSession} />} />
           <Route path="/create" element={<CreateSessionLogic onCreate={createSession} />} />
           <Route path="/scenarios" element={<ScenarioLogic scenarios={scenarios} onAdd={addScenario} onUpdate={updateScenario} onDelete={deleteScenario} />} />

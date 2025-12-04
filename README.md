@@ -7,8 +7,6 @@
 ![Platform](https://img.shields.io/badge/platform-web--container-blue)
 ![License](https://img.shields.io/badge/license-MIT-gray)
 
-** Thank you JESUS !!
-
 **Impetus2AI** is a cutting-edge, containerized-style platform designed to democratize penetration testing and security auditing. By leveraging advanced Large Language Models (LLMs) like **Google Gemini Pro** and **Claude 3.5 Sonnet**, it simulates a fully functional **Kali Linux** environment capable of autonomous reasoning, tool execution, and comprehensive reporting.
 
 ---
