@@ -1,5 +1,5 @@
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { PentestSession, SessionStatus, ReportType } from '../types';
 
 interface DashboardProps {
@@ -58,7 +58,10 @@ const SeverityBarChart = ({ counts }: { counts: { critical: number, high: number
 }
 
 const KillChainDonut = ({ phases }: { phases: Record<string, number> }) => {
-    const total = Object.values(phases).reduce((a, b) => a + b, 0) || 1;
+    const [hoveredPhase, setHoveredPhase] = useState<{ name: string, count: number, color: string } | null>(null);
+
+    const actualTotal = Object.values(phases).reduce((a, b) => a + b, 0);
+    const total = actualTotal || 1; // Prevent div by zero for visuals
     
     // Simplified distribution for Recon vs Access vs Impact
     const recon = phases['Reconnaissance'] || 0;
@@ -84,17 +87,57 @@ const KillChainDonut = ({ phases }: { phases: Record<string, number> }) => {
                 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#1f2937" strokeWidth="4" />
                 
                 {/* Recon - Blue */}
-                {pRecon > 0 && <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#3b82f6" strokeWidth="4" strokeDasharray={`${(pRecon/100)*c} ${c}`} strokeDashoffset={off1} />}
+                {pRecon > 0 && (
+                    <path 
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+                        fill="none" 
+                        stroke="#3b82f6" 
+                        strokeWidth="4" 
+                        strokeDasharray={`${(pRecon/100)*c} ${c}`} 
+                        strokeDashoffset={off1} 
+                        className="transition-all duration-300 hover:stroke-[5] cursor-pointer hover:opacity-80"
+                        onMouseEnter={() => setHoveredPhase({ name: 'Recon', count: recon, color: 'text-blue-500' })}
+                        onMouseLeave={() => setHoveredPhase(null)}
+                    />
+                )}
                 
                 {/* Access - Orange */}
-                {pAccess > 0 && <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#f97316" strokeWidth="4" strokeDasharray={`${(pAccess/100)*c} ${c}`} strokeDashoffset={off2} />}
+                {pAccess > 0 && (
+                    <path 
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+                        fill="none" 
+                        stroke="#f97316" 
+                        strokeWidth="4" 
+                        strokeDasharray={`${(pAccess/100)*c} ${c}`} 
+                        strokeDashoffset={off2}
+                        className="transition-all duration-300 hover:stroke-[5] cursor-pointer hover:opacity-80"
+                        onMouseEnter={() => setHoveredPhase({ name: 'Access', count: access, color: 'text-orange-500' })}
+                        onMouseLeave={() => setHoveredPhase(null)}
+                    />
+                )}
                 
                 {/* Post - Red */}
-                {pPost > 0 && <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#ef4444" strokeWidth="4" strokeDasharray={`${(pPost/100)*c} ${c}`} strokeDashoffset={off3} />}
+                {pPost > 0 && (
+                    <path 
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+                        fill="none" 
+                        stroke="#ef4444" 
+                        strokeWidth="4" 
+                        strokeDasharray={`${(pPost/100)*c} ${c}`} 
+                        strokeDashoffset={off3}
+                        className="transition-all duration-300 hover:stroke-[5] cursor-pointer hover:opacity-80"
+                        onMouseEnter={() => setHoveredPhase({ name: 'Post-Exp', count: post, color: 'text-red-500' })}
+                        onMouseLeave={() => setHoveredPhase(null)}
+                    />
+                )}
             </svg>
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-2xl font-bold text-white">{total}</span>
-                <span className="text-[8px] uppercase text-gray-500 tracking-wider">Ops</span>
+            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                <span className={`text-2xl font-bold transition-colors ${hoveredPhase ? hoveredPhase.color : 'text-white'}`}>
+                    {hoveredPhase ? hoveredPhase.count : actualTotal}
+                </span>
+                <span className="text-[8px] uppercase text-gray-500 tracking-wider">
+                    {hoveredPhase ? hoveredPhase.name : 'Total Ops'}
+                </span>
             </div>
         </div>
     );
@@ -111,7 +154,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ sessions }) => {
     { id: 'T1530', name: 'Cloud Discovery', phase: 'Discovery' },
     { id: 'T1046', name: 'Network Scan', phase: 'Discovery' },
     { id: 'T1078', name: 'Valid Accounts', phase: 'Defense Evasion' },
-    { id: 'T1003', name: 'Credential Dump', phase: 'Credential Access' },
+    { id: 'T1003', name: 'OS Credential Dumping', phase: 'Credential Access' },
   ];
 
   const analytics = useMemo(() => {
