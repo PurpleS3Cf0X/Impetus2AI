@@ -21,6 +21,7 @@ import { ArtifactsView } from './components/ArtifactsView';
 import { ReportsView } from './components/ReportsView';
 import { Documentation } from './components/Documentation';
 import { ReportsManager } from './components/ReportsManager';
+import { Dashboard } from './components/Dashboard';
 import { streamPentestResponse, generateReport } from './services/geminiService';
 import { DEFAULT_SCENARIOS, DB_VERSION } from './data/defaultScenarios';
 
@@ -41,7 +42,6 @@ const IconTarget = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24
 const IconHash = () => <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" /></svg>;
 const IconCpu = () => <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>;
 const IconList = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>;
-const IconShieldCheck = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
 const IconDocumentText = () => <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>;
 const IconBook = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>;
 const IconClock = () => <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
@@ -399,77 +399,6 @@ const SessionView = ({ session, onSendMessage, onTerminate, isStreaming, setting
       )}
     </div>
   );
-};
-
-const Dashboard = ({ sessions }: { sessions: PentestSession[] }) => {
-    const totalSessions = sessions.length;
-    const running = sessions.filter(s => s.status === SessionStatus.RUNNING).length;
-    const completed = sessions.filter(s => s.status === SessionStatus.COMPLETED).length;
-
-    const mitreTechniques = [
-        { id: 'T1595', covered: true },
-        { id: 'T1190', covered: running > 0 },
-        { id: 'T1059', covered: true },
-        { id: 'T1046', covered: true },
-        { id: 'T1078', covered: false },
-        { id: 'T1003', covered: false },
-    ];
-
-    return (
-        <div className="max-w-6xl mx-auto mt-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Security Operations Dashboard</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg">
-                    <h3 className="text-gray-400 text-sm font-medium mb-2">Total Sessions</h3>
-                    <div className="text-4xl font-bold text-white">{totalSessions}</div>
-                </div>
-                <div className="bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg">
-                    <h3 className="text-gray-400 text-sm font-medium mb-2">Running Containers</h3>
-                    <div className="text-4xl font-bold text-kali-accent">{running}</div>
-                </div>
-                <div className="bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg">
-                    <h3 className="text-gray-400 text-sm font-medium mb-2">Completed Ops</h3>
-                    <div className="text-4xl font-bold text-blue-400">{completed}</div>
-                </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                 <div className="bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg">
-                    <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><IconActivity /> Cluster Health</h3>
-                    <div className="space-y-4">
-                        <div>
-                            <div className="flex justify-between text-sm text-gray-400 mb-1"><span>CPU Load</span><span>34%</span></div>
-                            <div className="h-2 bg-kali-900 rounded-full overflow-hidden"><div className="h-full bg-blue-500 w-[34%]"></div></div>
-                        </div>
-                        <div>
-                            <div className="flex justify-between text-sm text-gray-400 mb-1"><span>Memory Usage</span><span>62%</span></div>
-                            <div className="h-2 bg-kali-900 rounded-full overflow-hidden"><div className="h-full bg-purple-500 w-[62%]"></div></div>
-                        </div>
-                        <div>
-                            <div className="flex justify-between text-sm text-gray-400 mb-1"><span>Network I/O</span><span>120 MB/s</span></div>
-                            <div className="h-2 bg-kali-900 rounded-full overflow-hidden"><div className="h-full bg-green-500 w-[15%]"></div></div>
-                        </div>
-                    </div>
-                 </div>
-
-                 <div className="bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg">
-                     <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><IconShieldCheck /> MITRE ATT&CK Coverage</h3>
-                     <div className="grid grid-cols-2 gap-3">
-                         {mitreTechniques.map(t => {
-                             const info = MITRE_DB[t.id];
-                             return (
-                             <div key={t.id} className={`p-2 rounded border text-xs font-mono flex justify-between items-center ${t.covered ? 'bg-red-900/20 border-red-900 text-red-200' : 'bg-kali-900 border-kali-700 text-gray-500'}`}>
-                                 <span>{t.id} {info?.name || 'Unknown'}</span>
-                                 {t.covered && <span className="w-2 h-2 bg-red-500 rounded-full"></span>}
-                             </div>
-                             );
-                         })}
-                     </div>
-                 </div>
-            </div>
-        </div>
-    );
 };
 
 const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
