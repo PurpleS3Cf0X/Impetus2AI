@@ -22,43 +22,43 @@ const SeverityBarChart = ({ counts }: { counts: { critical: number, high: number
     return (
         <div className="h-40 w-full flex items-end justify-between gap-4 px-4">
             {/* Low */}
-            <div className="flex flex-col items-center gap-2 w-full group">
-                <div className="w-full bg-blue-900/20 rounded-t relative h-32 flex items-end">
-                    <div className="w-full bg-blue-500/80 rounded-t transition-all duration-500 group-hover:bg-blue-400" style={{ height: getHeight(counts.low) }}></div>
-                     <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">{counts.low}</span>
+            <div className="flex flex-col items-center gap-2 w-full group cursor-pointer">
+                <div className="w-full bg-blue-900/10 rounded-t-sm relative h-32 flex items-end backdrop-blur-sm border-b border-blue-500/20">
+                    <div className="w-full bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-sm transition-all duration-500 group-hover:shadow-[0_0_15px_rgba(96,165,250,0.5)]" style={{ height: getHeight(counts.low) }}></div>
+                     <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm font-bold text-blue-300 opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 px-2 py-0.5 rounded border border-blue-500/30">{counts.low}</span>
                 </div>
-                <span className="text-[10px] uppercase text-gray-500 font-bold">Low</span>
+                <span className="text-[10px] uppercase text-blue-300 font-bold tracking-widest">Low</span>
             </div>
             {/* Medium */}
-             <div className="flex flex-col items-center gap-2 w-full group">
-                <div className="w-full bg-yellow-900/20 rounded-t relative h-32 flex items-end">
-                    <div className="w-full bg-yellow-500/80 rounded-t transition-all duration-500 group-hover:bg-yellow-400" style={{ height: getHeight(counts.medium) }}></div>
-                    <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">{counts.medium}</span>
+             <div className="flex flex-col items-center gap-2 w-full group cursor-pointer">
+                <div className="w-full bg-yellow-900/10 rounded-t-sm relative h-32 flex items-end backdrop-blur-sm border-b border-yellow-500/20">
+                    <div className="w-full bg-gradient-to-t from-yellow-600 to-yellow-400 rounded-t-sm transition-all duration-500 group-hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]" style={{ height: getHeight(counts.medium) }}></div>
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm font-bold text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 px-2 py-0.5 rounded border border-yellow-500/30">{counts.medium}</span>
                 </div>
-                <span className="text-[10px] uppercase text-gray-500 font-bold">Med</span>
+                <span className="text-[10px] uppercase text-yellow-300 font-bold tracking-widest">Med</span>
             </div>
             {/* High */}
-             <div className="flex flex-col items-center gap-2 w-full group">
-                <div className="w-full bg-orange-900/20 rounded-t relative h-32 flex items-end">
-                    <div className="w-full bg-orange-500/80 rounded-t transition-all duration-500 group-hover:bg-orange-400" style={{ height: getHeight(counts.high) }}></div>
-                     <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity">{counts.high}</span>
+             <div className="flex flex-col items-center gap-2 w-full group cursor-pointer">
+                <div className="w-full bg-orange-900/10 rounded-t-sm relative h-32 flex items-end backdrop-blur-sm border-b border-orange-500/20">
+                    <div className="w-full bg-gradient-to-t from-orange-600 to-orange-400 rounded-t-sm transition-all duration-500 group-hover:shadow-[0_0_15px_rgba(251,146,60,0.5)]" style={{ height: getHeight(counts.high) }}></div>
+                     <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm font-bold text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 px-2 py-0.5 rounded border border-orange-500/30">{counts.high}</span>
                 </div>
-                <span className="text-[10px] uppercase text-gray-500 font-bold">High</span>
+                <span className="text-[10px] uppercase text-orange-300 font-bold tracking-widest">High</span>
             </div>
             {/* Critical */}
-             <div className="flex flex-col items-center gap-2 w-full group">
-                <div className="w-full bg-red-900/20 rounded-t relative h-32 flex items-end">
-                    <div className="w-full bg-red-600/80 rounded-t transition-all duration-500 group-hover:bg-red-500" style={{ height: getHeight(counts.critical) }}></div>
-                    <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">{counts.critical}</span>
+             <div className="flex flex-col items-center gap-2 w-full group cursor-pointer">
+                <div className="w-full bg-red-900/10 rounded-t-sm relative h-32 flex items-end backdrop-blur-sm border-b border-red-500/20">
+                    <div className="w-full bg-gradient-to-t from-red-600 to-red-500 rounded-t-sm transition-all duration-500 group-hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]" style={{ height: getHeight(counts.critical) }}></div>
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm font-bold text-red-400 opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 px-2 py-0.5 rounded border border-red-500/30">{counts.critical}</span>
                 </div>
-                <span className="text-[10px] uppercase text-gray-500 font-bold">Crit</span>
+                <span className="text-[10px] uppercase text-red-400 font-bold tracking-widest">Crit</span>
             </div>
         </div>
     )
 }
 
 const KillChainDonut = ({ phases }: { phases: Record<string, number> }) => {
-    const [hoveredPhase, setHoveredPhase] = useState<{ name: string, count: number, color: string } | null>(null);
+    const [hoveredPhase, setHoveredPhase] = useState<{ name: string, count: number, color: string, glow: string } | null>(null);
 
     const actualTotal = Object.values(phases).reduce((a, b) => a + b, 0);
     const total = actualTotal || 1; // Prevent div by zero for visuals
@@ -81,10 +81,10 @@ const KillChainDonut = ({ phases }: { phases: Record<string, number> }) => {
     const off3 = -1 * ((pRecon + pAccess) / 100) * c;
 
     return (
-        <div className="relative w-32 h-32">
-            <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                {/* Background */}
-                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#1f2937" strokeWidth="4" />
+        <div className="relative w-32 h-32 flex items-center justify-center">
+            <svg className="w-full h-full transform -rotate-90 drop-shadow-xl" viewBox="0 0 36 36">
+                {/* Background Ring */}
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="3" />
                 
                 {/* Recon - Blue */}
                 {pRecon > 0 && (
@@ -92,11 +92,11 @@ const KillChainDonut = ({ phases }: { phases: Record<string, number> }) => {
                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
                         fill="none" 
                         stroke="#3b82f6" 
-                        strokeWidth="4" 
+                        strokeWidth="3" 
                         strokeDasharray={`${(pRecon/100)*c} ${c}`} 
                         strokeDashoffset={off1} 
-                        className="transition-all duration-300 hover:stroke-[5] cursor-pointer hover:opacity-80"
-                        onMouseEnter={() => setHoveredPhase({ name: 'Recon', count: recon, color: 'text-blue-500' })}
+                        className="transition-all duration-300 hover:stroke-[4] cursor-pointer hover:opacity-100 opacity-80"
+                        onMouseEnter={() => setHoveredPhase({ name: 'Recon', count: recon, color: 'text-blue-400', glow: 'drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]' })}
                         onMouseLeave={() => setHoveredPhase(null)}
                     />
                 )}
@@ -107,11 +107,11 @@ const KillChainDonut = ({ phases }: { phases: Record<string, number> }) => {
                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
                         fill="none" 
                         stroke="#f97316" 
-                        strokeWidth="4" 
+                        strokeWidth="3" 
                         strokeDasharray={`${(pAccess/100)*c} ${c}`} 
                         strokeDashoffset={off2}
-                        className="transition-all duration-300 hover:stroke-[5] cursor-pointer hover:opacity-80"
-                        onMouseEnter={() => setHoveredPhase({ name: 'Access', count: access, color: 'text-orange-500' })}
+                        className="transition-all duration-300 hover:stroke-[4] cursor-pointer hover:opacity-100 opacity-80"
+                        onMouseEnter={() => setHoveredPhase({ name: 'Access', count: access, color: 'text-orange-400', glow: 'drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]' })}
                         onMouseLeave={() => setHoveredPhase(null)}
                     />
                 )}
@@ -122,20 +122,20 @@ const KillChainDonut = ({ phases }: { phases: Record<string, number> }) => {
                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
                         fill="none" 
                         stroke="#ef4444" 
-                        strokeWidth="4" 
+                        strokeWidth="3" 
                         strokeDasharray={`${(pPost/100)*c} ${c}`} 
                         strokeDashoffset={off3}
-                        className="transition-all duration-300 hover:stroke-[5] cursor-pointer hover:opacity-80"
-                        onMouseEnter={() => setHoveredPhase({ name: 'Post-Exp', count: post, color: 'text-red-500' })}
+                        className="transition-all duration-300 hover:stroke-[4] cursor-pointer hover:opacity-100 opacity-80"
+                        onMouseEnter={() => setHoveredPhase({ name: 'Post-Exp', count: post, color: 'text-red-400', glow: 'drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]' })}
                         onMouseLeave={() => setHoveredPhase(null)}
                     />
                 )}
             </svg>
-            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+            <div className={`absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-all duration-300 ${hoveredPhase?.glow || ''}`}>
                 <span className={`text-2xl font-bold transition-colors ${hoveredPhase ? hoveredPhase.color : 'text-white'}`}>
                     {hoveredPhase ? hoveredPhase.count : actualTotal}
                 </span>
-                <span className="text-[8px] uppercase text-gray-500 tracking-wider">
+                <span className="text-[9px] uppercase text-gray-400 tracking-wider font-semibold">
                     {hoveredPhase ? hoveredPhase.name : 'Total Ops'}
                 </span>
             </div>
@@ -197,141 +197,162 @@ export const Dashboard: React.FC<DashboardProps> = ({ sessions }) => {
     <div className="max-w-7xl mx-auto mt-6 pb-12 animate-in fade-in duration-500">
       <div className="flex justify-between items-end mb-8">
         <div>
-            <h2 className="text-3xl font-bold text-white tracking-tight flex items-center gap-3">
-                <IconFlag /> Offensive Operations Control
+            <h2 className="text-3xl font-bold text-white tracking-tight flex items-center gap-3 drop-shadow-lg">
+                <span className="p-2 bg-gradient-to-br from-kali-accent to-emerald-600 rounded-lg shadow-lg shadow-kali-accent/20 text-black"><IconFlag /></span> 
+                Offensive Operations Control
             </h2>
-            <p className="text-gray-400 mt-1">Red Team Engagement Telemetry & Analytics.</p>
+            <p className="text-gray-400 mt-2 text-sm font-medium tracking-wide">Red Team Engagement Telemetry & Analytics.</p>
         </div>
         <div className="flex gap-2">
-            <span className="px-3 py-1 bg-kali-900 border border-kali-700 rounded text-xs text-kali-accent font-mono flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-kali-accent animate-pulse"></span>
+            <span className="px-3 py-1.5 bg-black/40 border border-kali-accent/30 rounded-full text-xs text-kali-accent font-mono flex items-center gap-2 backdrop-blur-md shadow-[0_0_10px_rgba(0,255,159,0.1)]">
+                <span className="w-2 h-2 rounded-full bg-kali-accent animate-pulse shadow-[0_0_5px_#00ff9f]"></span>
                 OP_CENTER ACTIVE
             </span>
         </div>
       </div>
       
-      {/* Top Stats Row - Red Team Focused */}
+      {/* Top Stats Row - Glass Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         
         {/* Metric 1: Active Engagements */}
-        <div className="bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-kali-accent"><IconTarget /></div>
-            <h3 className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Active Engagements</h3>
-            <div className="flex items-end gap-3">
-                <div className="text-4xl font-bold text-white">{analytics.running}</div>
-                <div className="text-xs text-gray-500 mb-1.5">Running Ops</div>
+        <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-gray-900/30 backdrop-blur-xl shadow-2xl group transition-transform hover:-translate-y-1">
+            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity text-kali-accent scale-150"><IconTarget /></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-kali-accent/5 to-transparent opacity-50"></div>
+            <div className="p-6 relative z-10">
+                <h3 className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Active Engagements</h3>
+                <div className="flex items-baseline gap-2">
+                    <div className="text-4xl font-bold text-white drop-shadow-md">{analytics.running}</div>
+                    <div className="text-xs text-kali-accent font-medium mb-1">Live Ops</div>
+                </div>
+                <div className="mt-3 h-1 w-full bg-gray-700/50 rounded-full overflow-hidden">
+                    <div className="h-full bg-kali-accent/80 w-1/2 animate-pulse"></div>
+                </div>
             </div>
-            <div className="mt-2 text-xs text-gray-500 font-mono">Sessions currently live</div>
         </div>
 
         {/* Metric 2: Exfiltrated Data */}
-        <div className="bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-purple-400"><IconBriefcase /></div>
-            <h3 className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Exfiltrated Artifacts</h3>
-            <div className="flex items-end gap-3">
-                <div className="text-4xl font-bold text-white">{analytics.totalArtifacts}</div>
-                <div className="text-xs text-gray-500 mb-1.5">Files Captured</div>
+        <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-gray-900/30 backdrop-blur-xl shadow-2xl group transition-transform hover:-translate-y-1">
+            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity text-purple-400 scale-150"><IconBriefcase /></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-50"></div>
+            <div className="p-6 relative z-10">
+                <h3 className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Artifacts Captured</h3>
+                <div className="flex items-baseline gap-2">
+                    <div className="text-4xl font-bold text-white drop-shadow-md">{analytics.totalArtifacts}</div>
+                    <div className="text-xs text-purple-400 font-medium mb-1">Files</div>
+                </div>
+                 <div className="mt-3 h-1 w-full bg-gray-700/50 rounded-full overflow-hidden">
+                    <div className="h-full bg-purple-500/80 w-3/4"></div>
+                </div>
             </div>
-             <div className="mt-2 text-xs text-purple-400 font-mono">Proof of Value</div>
         </div>
 
         {/* Metric 3: Critical Findings */}
-        <div className="bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-red-500"><IconSkull /></div>
-            <h3 className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Critical Findings</h3>
-            <div className="flex items-end gap-3">
-                <div className="text-4xl font-bold text-white">{analytics.severity.critical}</div>
-                <div className="text-xs text-gray-500 mb-1.5">Vulnerabilities</div>
+        <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-gray-900/30 backdrop-blur-xl shadow-2xl group transition-transform hover:-translate-y-1">
+            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity text-red-500 scale-150"><IconSkull /></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-50"></div>
+            <div className="p-6 relative z-10">
+                <h3 className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Critical Findings</h3>
+                <div className="flex items-baseline gap-2">
+                    <div className="text-4xl font-bold text-white drop-shadow-md">{analytics.severity.critical}</div>
+                    <div className="text-xs text-red-400 font-medium mb-1">Vulns</div>
+                </div>
+                <div className="mt-3 h-1 w-full bg-gray-700/50 rounded-full overflow-hidden">
+                    <div className="h-full bg-red-500/80 w-1/4"></div>
+                </div>
             </div>
-             <div className="mt-2 text-xs text-red-500 font-mono">Requires Immediate Action</div>
         </div>
 
          {/* Metric 4: Kill Chain Depth */}
-         <div className="bg-kali-800 p-4 rounded-xl border border-kali-700 shadow-lg relative overflow-hidden flex items-center justify-between">
-            <div>
-                 <h3 className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Kill Chain</h3>
-                 <div className="flex flex-col gap-1 mt-2">
-                     <div className="flex items-center gap-2 text-xs">
-                         <span className="w-2 h-2 rounded-full bg-blue-500"></span> Recon ({analytics.phases['Reconnaissance'] || 0})
+         <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-gray-900/30 backdrop-blur-xl shadow-2xl flex items-center justify-between p-1 group">
+             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-50"></div>
+            <div className="pl-6 relative z-10">
+                 <h3 className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-3">Kill Chain Phase</h3>
+                 <div className="flex flex-col gap-1.5">
+                     <div className="flex items-center gap-2 text-xs text-gray-300">
+                         <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_5px_blue]"></span> Recon ({analytics.phases['Reconnaissance'] || 0})
                      </div>
-                     <div className="flex items-center gap-2 text-xs">
-                         <span className="w-2 h-2 rounded-full bg-orange-500"></span> Access ({ (analytics.phases['Initial Access']||0) + (analytics.phases['Execution']||0) })
+                     <div className="flex items-center gap-2 text-xs text-gray-300">
+                         <span className="w-1.5 h-1.5 rounded-full bg-orange-500 shadow-[0_0_5px_orange]"></span> Access ({ (analytics.phases['Initial Access']||0) + (analytics.phases['Execution']||0) })
                      </div>
-                     <div className="flex items-center gap-2 text-xs">
-                         <span className="w-2 h-2 rounded-full bg-red-500"></span> Post-Exp ({ (analytics.phases['Defense Evasion']||0) + (analytics.phases['Credential Access']||0) })
+                     <div className="flex items-center gap-2 text-xs text-gray-300">
+                         <span className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_5px_red]"></span> Post-Exp ({ (analytics.phases['Defense Evasion']||0) + (analytics.phases['Credential Access']||0) })
                      </div>
                  </div>
             </div>
-            <KillChainDonut phases={analytics.phases} />
+            <div className="pr-4 relative z-10">
+                <KillChainDonut phases={analytics.phases} />
+            </div>
         </div>
       </div>
 
       {/* Main Visuals Area */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         {/* Severity Distribution */}
-        <div className="lg:col-span-2 bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg">
-             <div className="flex justify-between items-center mb-6">
+        <div className="lg:col-span-2 relative overflow-hidden rounded-2xl border border-white/5 bg-gray-900/40 backdrop-blur-xl shadow-2xl p-6">
+             <div className="flex justify-between items-center mb-6 border-b border-white/5 pb-4">
                 <h3 className="text-lg font-bold text-white flex items-center gap-2"><IconBug /> Vulnerability Severity Distribution</h3>
-                <div className="px-2 py-1 bg-kali-900 rounded text-[10px] text-gray-400 border border-kali-700">Aggregate Findings</div>
+                <div className="px-2 py-1 bg-black/40 rounded text-[10px] text-gray-400 border border-white/10">Aggregate Findings</div>
              </div>
-             <div className="bg-kali-900/50 rounded-lg border border-kali-700/50 p-4 flex items-center justify-center">
+             <div className="bg-black/20 rounded-xl border border-white/5 p-6 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:16px_16px]"></div>
                 {analytics.severity.critical + analytics.severity.high + analytics.severity.medium + analytics.severity.low === 0 ? (
-                    <div className="h-40 flex items-center justify-center text-gray-600 text-sm italic">No vulnerability data available yet.</div>
+                    <div className="h-40 flex items-center justify-center text-gray-600 text-sm italic z-10">No vulnerability data available yet.</div>
                 ) : (
-                    <SeverityBarChart counts={analytics.severity} />
+                    <div className="z-10 w-full"><SeverityBarChart counts={analytics.severity} /></div>
                 )}
              </div>
         </div>
 
         {/* MITRE Heatmap */}
-        <div className="bg-kali-800 p-6 rounded-xl border border-kali-700 shadow-lg">
-            <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2"><IconTarget /> MITRE ATT&CK Map</h3>
-            <div className="grid grid-cols-2 gap-3">
+        <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-gray-900/40 backdrop-blur-xl shadow-2xl p-6">
+            <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2 border-b border-white/5 pb-4"><IconTarget /> MITRE ATT&CK Map</h3>
+            <div className="grid grid-cols-2 gap-2">
                 {mitreGrid.map(technique => {
-                    const count = analytics.phases[technique.phase] || 0; // Simplified counting for demo
-                    // Check strict match from sessions
+                    const count = analytics.phases[technique.phase] || 0; 
                     const strictCount = sessions.filter(s => s.mitreId === technique.id).length;
                     
-                    const intensity = strictCount > 2 ? 'bg-red-500/90 text-white border-red-500' : strictCount > 0 ? 'bg-red-900/40 text-red-200 border-red-800' : 'bg-kali-900 text-gray-600 border-kali-700 opacity-60';
+                    const intensity = strictCount > 2 
+                        ? 'bg-red-500/20 text-red-200 border-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.2)]' 
+                        : strictCount > 0 
+                        ? 'bg-red-900/20 text-gray-300 border-red-900/30' 
+                        : 'bg-black/20 text-gray-600 border-white/5';
+                        
                     return (
-                        <div key={technique.id} className={`p-2 rounded border text-xs transition-all cursor-default group relative ${intensity}`}>
-                            <div className="font-mono font-bold">{technique.id}</div>
-                            <div className="truncate text-[10px]">{technique.name}</div>
+                        <div key={technique.id} className={`p-2.5 rounded border text-xs transition-all cursor-default group relative ${intensity} hover:bg-white/5`}>
+                            <div className="font-mono font-bold text-[10px] opacity-70">{technique.id}</div>
+                            <div className="truncate text-[10px] font-medium">{technique.name}</div>
                             
-                            {/* Tooltip */}
-                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-[10px] rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-10 shadow-xl border border-gray-700">
-                                {technique.phase}: {strictCount} Ops
+                            {/* Glass Tooltip */}
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900/90 backdrop-blur-xl text-white text-[10px] rounded border border-white/10 opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-20 shadow-xl transition-opacity">
+                                <span className="text-kali-accent font-bold">{technique.phase}</span>: {strictCount} Ops
                             </div>
                         </div>
                     )
                 })}
             </div>
-            <div className="mt-4 text-[10px] text-gray-500 text-center">
-                Tactical coverage based on executed scenarios.
-            </div>
         </div>
       </div>
 
       {/* Bottom Row: Recent Logs */}
-      <div className="bg-kali-800 rounded-xl border border-kali-700 shadow-lg overflow-hidden">
-          <div className="px-6 py-4 border-b border-kali-700 flex justify-between items-center bg-kali-900/50">
-              <h3 className="font-bold text-white">Engagement Logs</h3>
-              <span className="text-xs text-gray-500 font-mono">Recent Events</span>
+      <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-gray-900/40 backdrop-blur-xl shadow-2xl">
+          <div className="px-6 py-4 border-b border-white/5 flex justify-between items-center bg-white/5">
+              <h3 className="font-bold text-white text-sm uppercase tracking-wider">Engagement Logs</h3>
+              <span className="text-xs text-gray-500 font-mono flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Live Feed</span>
           </div>
-          <div className="divide-y divide-kali-700">
+          <div className="divide-y divide-white/5 max-h-60 overflow-y-auto">
               {analytics.activityLog.length > 0 ? analytics.activityLog.map((log, idx) => (
-                  <div key={idx} className="px-6 py-3 flex items-start gap-4 hover:bg-kali-700/20 transition-colors">
-                      <div className={`mt-1.5 w-2 h-2 rounded-full ${log.sender === 'user' ? 'bg-kali-accent' : log.sender === 'system' ? 'bg-yellow-500' : 'bg-blue-500'}`}></div>
+                  <div key={idx} className="px-6 py-3 flex items-start gap-4 hover:bg-white/5 transition-colors group">
+                      <div className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${log.sender === 'user' ? 'bg-kali-accent shadow-[0_0_5px_#00ff9f]' : log.sender === 'system' ? 'bg-yellow-500 shadow-[0_0_5px_#eab308]' : 'bg-blue-500 shadow-[0_0_5px_#3b82f6]'}`}></div>
                       <div className="flex-1 min-w-0">
-                          <div className="flex justify-between items-baseline mb-1">
-                              <span className="text-sm font-medium text-white truncate w-1/3 font-mono">{log.sessionName}</span>
-                              <span className="text-xs text-gray-500 font-mono">{new Date(log.timestamp).toLocaleTimeString()}</span>
+                          <div className="flex justify-between items-baseline mb-0.5">
+                              <span className="text-xs font-bold text-gray-300 truncate w-1/3 font-mono group-hover:text-white transition-colors">{log.sessionName}</span>
+                              <span className="text-[10px] text-gray-600 font-mono">{new Date(log.timestamp).toLocaleTimeString()}</span>
                           </div>
-                          <p className="text-xs text-gray-400 font-mono truncate opacity-80">{log.content}</p>
+                          <p className="text-xs text-gray-500 font-mono truncate opacity-80 group-hover:opacity-100 transition-opacity">{log.content}</p>
                       </div>
                   </div>
               )) : (
-                  <div className="p-8 text-center text-gray-500 italic">No activity recorded yet. Launch an operation to generate telemetry.</div>
+                  <div className="p-8 text-center text-gray-600 italic text-sm">No activity recorded yet. Launch an operation to generate telemetry.</div>
               )}
           </div>
       </div>

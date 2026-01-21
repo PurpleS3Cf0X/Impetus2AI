@@ -70,40 +70,43 @@ const Sidebar = ({ isCollapsed, toggleSidebar }: any) => {
     setTooltip({ top: rect.top, left: rect.right + 12, title });
   };
   return (
-    <div className={`${isCollapsed ? 'w-20' : 'w-64'} bg-kali-800 border-r border-kali-700 flex flex-col h-screen transition-all duration-300 ease-in-out relative z-10`}>
-      <Link to="/" className={`h-16 flex items-center border-b border-kali-700 hover:bg-kali-700/50 transition-colors group ${isCollapsed ? 'justify-center px-0' : 'px-6'}`}>
+    <div className={`${isCollapsed ? 'w-20' : 'w-64'} bg-black/20 backdrop-blur-2xl border-r border-white/5 flex flex-col h-screen transition-all duration-300 ease-in-out relative z-30`}>
+      <Link to="/" className={`h-16 flex items-center border-b border-white/5 hover:bg-white/5 transition-colors group ${isCollapsed ? 'justify-center px-0' : 'px-6'}`}>
         {isCollapsed ? <div className="text-kali-accent"><IconTarget /></div> : (
-          <div className="flex-1"><h1 className="text-xl font-bold text-kali-accent tracking-tight flex items-center gap-2 group-hover:text-white transition-colors"><IconTarget />Impetus2AI</h1><p className="text-xs text-gray-500 mt-1 whitespace-nowrap overflow-hidden">AI-Powered Security Platform</p></div>
+          <div className="flex-1"><h1 className="text-xl font-bold text-kali-accent tracking-tight flex items-center gap-2 group-hover:text-white transition-colors"><IconTarget />Impetus2AI</h1><p className="text-xs text-gray-400 mt-1 whitespace-nowrap overflow-hidden opacity-70">AI-Powered Security Platform</p></div>
         )}
       </Link>
       <div className="p-4 space-y-2">
         <Link to="/" onMouseEnter={(e) => handleMouseEnter(e, "Dashboard")} onMouseLeave={() => setTooltip(null)}>
-          <Button variant={isActive('/') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'}`}><IconLayout />{!isCollapsed && <span>Dashboard</span>}</Button>
+          <Button variant={isActive('/') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'} ${isActive('/') ? 'bg-white/10 text-white' : 'text-gray-400'}`}><IconLayout />{!isCollapsed && <span>Dashboard</span>}</Button>
         </Link>
         <Link to="/sessions" onMouseEnter={(e) => handleMouseEnter(e, "Sessions")} onMouseLeave={() => setTooltip(null)}>
-          <Button variant={isActive('/sessions') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'}`}><IconList />{!isCollapsed && <span>Sessions</span>}</Button>
+          <Button variant={isActive('/sessions') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'} ${isActive('/sessions') ? 'bg-white/10 text-white' : 'text-gray-400'}`}><IconList />{!isCollapsed && <span>Sessions</span>}</Button>
         </Link>
         <Link to="/scenarios" onMouseEnter={(e) => handleMouseEnter(e, "Attack Scenarios")} onMouseLeave={() => setTooltip(null)}>
-           <Button variant={isActive('/scenarios') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'}`}><IconActivity />{!isCollapsed && <span>Attack Scenarios</span>}</Button>
+           <Button variant={isActive('/scenarios') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'} ${isActive('/scenarios') ? 'bg-white/10 text-white' : 'text-gray-400'}`}><IconActivity />{!isCollapsed && <span>Attack Scenarios</span>}</Button>
         </Link>
       </div>
       <div className="flex-1" />
-      <div className="p-4 border-t border-kali-700 space-y-2 bg-kali-800">
+      <div className="p-4 border-t border-white/5 space-y-2 bg-black/20">
         <Link to="/reports" onMouseEnter={(e) => handleMouseEnter(e, "Reports Library")} onMouseLeave={() => setTooltip(null)}>
-           <Button variant={isActive('/reports') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'}`}><IconDocumentReport />{!isCollapsed && <span>Reports Library</span>}</Button>
+           <Button variant={isActive('/reports') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'} ${isActive('/reports') ? 'bg-white/10 text-white' : 'text-gray-400'}`}><IconDocumentReport />{!isCollapsed && <span>Reports Library</span>}</Button>
         </Link>
         <Link to="/docs" onMouseEnter={(e) => handleMouseEnter(e, "Documentation")} onMouseLeave={() => setTooltip(null)}>
-           <Button variant={isActive('/docs') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'}`}><IconBook />{!isCollapsed && <span>Documentation</span>}</Button>
+           <Button variant={isActive('/docs') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'} ${isActive('/docs') ? 'bg-white/10 text-white' : 'text-gray-400'}`}><IconBook />{!isCollapsed && <span>Documentation</span>}</Button>
         </Link>
         <Link to="/settings" onMouseEnter={(e) => handleMouseEnter(e, "Settings")} onMouseLeave={() => setTooltip(null)}>
-          <Button variant={isActive('/settings') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'}`}><IconSettings />{!isCollapsed && <span>Settings</span>}</Button>
+          <Button variant={isActive('/settings') ? 'secondary' : 'ghost'} className={`w-full ${isCollapsed ? 'justify-center px-0' : 'gap-2 justify-start'} ${isActive('/settings') ? 'bg-white/10 text-white' : 'text-gray-400'}`}><IconSettings />{!isCollapsed && <span>Settings</span>}</Button>
         </Link>
-        <button onClick={toggleSidebar} className={`w-full flex items-center text-gray-500 hover:text-white transition-colors mt-2 pt-2 border-t border-kali-700/50 ${isCollapsed ? 'justify-center' : 'justify-end'}`}>{isCollapsed ? <IconChevronRight /> : <IconChevronLeft />}</button>
+        <button onClick={toggleSidebar} className={`w-full flex items-center text-gray-500 hover:text-white transition-colors mt-2 pt-2 border-t border-white/5 ${isCollapsed ? 'justify-center' : 'justify-end'}`}>{isCollapsed ? <IconChevronRight /> : <IconChevronLeft />}</button>
       </div>
-      {isCollapsed && tooltip && <div className="fixed z-[100] bg-kali-900 border border-kali-700 rounded-md shadow-2xl p-3 w-48 pointer-events-none" style={{ top: tooltip.top, left: tooltip.left }}><div className="font-bold text-gray-200 text-sm truncate">{tooltip.title}</div></div>}
+      {isCollapsed && tooltip && <div className="fixed z-[100] bg-gray-900/90 backdrop-blur-md border border-white/10 rounded-md shadow-2xl p-3 w-48 pointer-events-none" style={{ top: tooltip.top, left: tooltip.left }}><div className="font-bold text-gray-200 text-sm truncate">{tooltip.title}</div></div>}
     </div>
   );
 };
+
+// ... [Existing Components: CreateSessionView, AttackScenariosView, etc. remain mostly the same structurally] ...
+// I will reuse the existing components but they will render within the new glass Layout. 
 
 const CreateSessionView = ({ onCreate, initialData }: { onCreate: (data: CreateSessionDTO) => void, initialData?: Partial<CreateSessionDTO> }) => {
   const [formData, setFormData] = useState<CreateSessionDTO>({ 
@@ -129,19 +132,19 @@ const CreateSessionView = ({ onCreate, initialData }: { onCreate: (data: CreateS
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-6 p-8 bg-kali-800 rounded-xl border border-kali-700 shadow-2xl mb-10 animate-in fade-in slide-in-from-bottom-4">
+    <div className="max-w-2xl mx-auto mt-6 p-8 bg-gray-900/50 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl mb-10 animate-in fade-in slide-in-from-bottom-4">
       <h2 className="text-2xl font-bold text-white mb-2">Initialize Pentest Session</h2>
       <p className="text-gray-400 mb-6 text-sm">Configure a new containerized environment for your security assessment.</p>
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div><label className="block text-sm font-medium text-gray-300 mb-1">Session Name</label><input required className="w-full bg-kali-900 border border-kali-600 rounded-md px-4 py-2 text-white focus:border-kali-accent outline-none" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} placeholder="e.g., Web App Audit - Acme Corp" /></div>
-        <div><label className="block text-sm font-medium text-gray-300 mb-1">Target Scope</label><input required className="w-full bg-kali-900 border border-kali-600 rounded-md px-4 py-2 text-white focus:border-kali-accent outline-none" value={formData.target} onChange={e => setFormData({ ...formData, target: e.target.value })} placeholder="e.g., 192.168.1.5, example.com" /></div>
-        <div><label className="block text-sm font-medium text-gray-300 mb-1">Primary Objective</label><input required className="w-full bg-kali-900 border border-kali-600 rounded-md px-4 py-2 text-white focus:border-kali-accent outline-none" value={formData.objective} onChange={e => setFormData({ ...formData, objective: e.target.value })} placeholder="e.g., Scan for open ports and identify service versions" /></div>
-        <div><label className="block text-sm font-medium text-gray-300 mb-1">Custom System Context (Optional)</label><textarea className="w-full bg-kali-900 border border-kali-600 rounded-md px-4 py-2 text-white focus:border-kali-accent outline-none h-20 text-sm" value={formData.customSystemPrompt} onChange={e => setFormData({ ...formData, customSystemPrompt: e.target.value })} placeholder="Inject specific personality, tools, or constraints for this session..." /></div>
+        <div><label className="block text-sm font-medium text-gray-300 mb-1">Session Name</label><input required className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-2 text-white focus:border-kali-accent outline-none focus:ring-1 focus:ring-kali-accent/50 transition-all" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} placeholder="e.g., Web App Audit - Acme Corp" /></div>
+        <div><label className="block text-sm font-medium text-gray-300 mb-1">Target Scope</label><input required className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-2 text-white focus:border-kali-accent outline-none focus:ring-1 focus:ring-kali-accent/50 transition-all" value={formData.target} onChange={e => setFormData({ ...formData, target: e.target.value })} placeholder="e.g., 192.168.1.5, example.com" /></div>
+        <div><label className="block text-sm font-medium text-gray-300 mb-1">Primary Objective</label><input required className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-2 text-white focus:border-kali-accent outline-none focus:ring-1 focus:ring-kali-accent/50 transition-all" value={formData.objective} onChange={e => setFormData({ ...formData, objective: e.target.value })} placeholder="e.g., Scan for open ports and identify service versions" /></div>
+        <div><label className="block text-sm font-medium text-gray-300 mb-1">Custom System Context (Optional)</label><textarea className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-2 text-white focus:border-kali-accent outline-none focus:ring-1 focus:ring-kali-accent/50 transition-all h-20 text-sm" value={formData.customSystemPrompt} onChange={e => setFormData({ ...formData, customSystemPrompt: e.target.value })} placeholder="Inject specific personality, tools, or constraints for this session..." /></div>
         <div>
            <label className="block text-sm font-medium text-gray-300 mb-2">AI Model Agent</label>
            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
              {[AgentModel.GEMINI_FLASH, AgentModel.GEMINI_PRO, AgentModel.CLAUDE_3_5_SONNET].map(m => (
-               <div key={m} className={`cursor-pointer border rounded-lg p-3 transition-all ${formData.model === m ? 'border-kali-accent bg-kali-700 ring-1 ring-kali-accent' : 'border-kali-600 bg-kali-900 hover:border-gray-500'}`} onClick={() => setFormData({...formData, model: m})}>
+               <div key={m} className={`cursor-pointer border rounded-lg p-3 transition-all ${formData.model === m ? 'border-kali-accent bg-kali-accent/10 ring-1 ring-kali-accent' : 'border-white/10 bg-black/20 hover:border-gray-500 hover:bg-white/5'}`} onClick={() => setFormData({...formData, model: m})}>
                  <div className={`font-bold text-sm ${formData.model === m ? 'text-white' : 'text-gray-400'}`}>{m}</div>
                  <div className="text-[10px] text-gray-500 mt-1">
                     {m === AgentModel.GEMINI_FLASH ? 'Fast, low latency.' : m === AgentModel.GEMINI_PRO ? 'Deep reasoning.' : 'Agentic coding.'}
@@ -209,10 +212,10 @@ const AttackScenariosView = ({ scenarios, onAdd, onUpdate, onDelete, onRun }: an
                 <Button onClick={openCreate}><IconPlus /> Create Scenario</Button>
             </div>
 
-            <div className="bg-kali-800 rounded-lg border border-kali-700 overflow-hidden shadow-xl">
+            <div className="bg-gray-900/50 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden shadow-2xl">
                 <table className="w-full text-left border-collapse">
                     <thead>
-                        <tr className="bg-kali-900 text-gray-400 text-xs uppercase tracking-wider border-b border-kali-700">
+                        <tr className="bg-black/20 text-gray-400 text-xs uppercase tracking-wider border-b border-white/10">
                             <th className="p-4 font-medium">Scenario Name</th>
                             <th className="p-4 font-medium">Category</th>
                             <th className="p-4 font-medium">Tactic</th>
@@ -222,15 +225,15 @@ const AttackScenariosView = ({ scenarios, onAdd, onUpdate, onDelete, onRun }: an
                             <th className="p-4 font-medium text-right">Actions</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-kali-700">
+                    <tbody className="divide-y divide-white/5">
                         {scenarios.map((s: AttackScenario) => {
                             const mitreInfo = MITRE_DB[s.mitreId];
                             return (
-                            <tr key={s.id} className="hover:bg-kali-700/30 transition-colors group">
+                            <tr key={s.id} className="hover:bg-white/5 transition-colors group">
                                 <td className="p-4 text-sm font-medium text-white">{s.name}</td>
-                                <td className="p-4 text-sm text-gray-300"><span className="px-2 py-1 rounded bg-kali-900 border border-kali-700 text-xs">{s.category}</span></td>
+                                <td className="p-4 text-sm text-gray-300"><span className="px-2 py-1 rounded bg-black/30 border border-white/10 text-xs">{s.category}</span></td>
                                 <td className="p-4 text-sm text-gray-300">
-                                    <span className="px-2 py-0.5 rounded-full bg-blue-900/30 text-blue-300 border border-blue-900/50 text-xs font-medium">
+                                    <span className="px-2 py-0.5 rounded-full bg-blue-900/30 text-blue-300 border border-blue-500/30 text-xs font-medium">
                                         {mitreInfo?.tactic || '-'}
                                     </span>
                                 </td>
@@ -263,23 +266,23 @@ const AttackScenariosView = ({ scenarios, onAdd, onUpdate, onDelete, onRun }: an
             </div>
 
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-                    <div className="bg-kali-800 rounded-xl border border-kali-700 p-6 w-full max-w-lg shadow-2xl">
+                <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+                    <div className="bg-gray-900/90 backdrop-blur-xl rounded-xl border border-white/10 p-6 w-full max-w-lg shadow-2xl">
                         <h3 className="text-xl font-bold text-white mb-4">{editingScenario ? 'Edit Scenario' : 'New Scenario'}</h3>
                         <form onSubmit={handleSave} className="space-y-4">
-                            <input required className="w-full bg-kali-900 border border-kali-600 rounded p-2 text-white text-sm" placeholder="Name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
+                            <input required className="w-full bg-black/50 border border-white/10 rounded p-2 text-white text-sm" placeholder="Name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
                             <div className="flex gap-4">
-                                <select className="bg-kali-900 border border-kali-600 rounded p-2 text-white text-sm flex-1" value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})}>
+                                <select className="bg-black/50 border border-white/10 rounded p-2 text-white text-sm flex-1" value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})}>
                                     <option>Network</option><option>Web</option><option>Cloud</option><option>API</option><option>Social Eng</option>
                                 </select>
-                                <select className="bg-kali-900 border border-kali-600 rounded p-2 text-white text-sm flex-1" value={formData.difficulty} onChange={e => setFormData({...formData, difficulty: e.target.value as any})}>
+                                <select className="bg-black/50 border border-white/10 rounded p-2 text-white text-sm flex-1" value={formData.difficulty} onChange={e => setFormData({...formData, difficulty: e.target.value as any})}>
                                     <option>Beginner</option><option>Intermediate</option><option>Advanced</option>
                                 </select>
                             </div>
-                            <input className="w-full bg-kali-900 border border-kali-600 rounded p-2 text-white text-sm" placeholder="MITRE ATT&CK ID (e.g. T1595)" value={formData.mitreId} onChange={e => setFormData({...formData, mitreId: e.target.value})} />
-                            <textarea className="w-full bg-kali-900 border border-kali-600 rounded p-2 text-white text-sm h-20" placeholder="Description" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} />
-                            <input className="w-full bg-kali-900 border border-kali-600 rounded p-2 text-white text-sm" placeholder="Tools (comma separated)" value={formData.tools?.join(', ')} onChange={e => setFormData({...formData, tools: e.target.value.split(',').map(t => t.trim())})} />
-                            <textarea required className="w-full bg-kali-900 border border-kali-600 rounded p-2 text-white text-sm h-24 font-mono" placeholder="Initial Prompt / Command" value={formData.initialPrompt} onChange={e => setFormData({...formData, initialPrompt: e.target.value})} />
+                            <input className="w-full bg-black/50 border border-white/10 rounded p-2 text-white text-sm" placeholder="MITRE ATT&CK ID (e.g. T1595)" value={formData.mitreId} onChange={e => setFormData({...formData, mitreId: e.target.value})} />
+                            <textarea className="w-full bg-black/50 border border-white/10 rounded p-2 text-white text-sm h-20" placeholder="Description" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} />
+                            <input className="w-full bg-black/50 border border-white/10 rounded p-2 text-white text-sm" placeholder="Tools (comma separated)" value={formData.tools?.join(', ')} onChange={e => setFormData({...formData, tools: e.target.value.split(',').map(t => t.trim())})} />
+                            <textarea required className="w-full bg-black/50 border border-white/10 rounded p-2 text-white text-sm h-24 font-mono" placeholder="Initial Prompt / Command" value={formData.initialPrompt} onChange={e => setFormData({...formData, initialPrompt: e.target.value})} />
                             <div className="flex justify-end gap-2 pt-2">
                                 <Button type="button" variant="ghost" onClick={() => setIsModalOpen(false)}>Cancel</Button>
                                 <Button type="submit">Save Scenario</Button>
@@ -321,17 +324,17 @@ const SessionView = ({ session, onSendMessage, onTerminate, isStreaming, setting
     <div className="flex flex-col h-full max-w-6xl mx-auto">
       <div className="shrink-0">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold text-white font-mono tracking-tight">
+          <h2 className="text-2xl font-bold text-white font-mono tracking-tight shadow-black drop-shadow-lg">
             <span className="text-kali-accent">{settings.general.userName}@impetus2ai</span> <span className="text-gray-400">:</span> <span className="text-gray-300">~/sessions/{session.name.toLowerCase().replace(/\s+/g, '-')}</span>
           </h2>
           <div className="flex items-center gap-3">
              {session.status === SessionStatus.RUNNING && <Button size="sm" variant="danger" onClick={() => setShowTerminateConfirm(true)} className="text-xs"><IconStop /> Stop Session</Button>}
-             <Button size="sm" variant="ghost" onClick={() => setShowMonitor(!showMonitor)} className={`text-xs ${showMonitor ? 'bg-kali-700' : ''}`}><IconActivity /> Monitor</Button>
-             <div className="px-3 py-1 rounded-full text-xs font-bold font-mono tracking-wide bg-green-900/20 text-green-400 border border-green-900">{session.status}</div>
+             <Button size="sm" variant="ghost" onClick={() => setShowMonitor(!showMonitor)} className={`text-xs ${showMonitor ? 'bg-white/10' : ''}`}><IconActivity /> Monitor</Button>
+             <div className="px-3 py-1 rounded-full text-xs font-bold font-mono tracking-wide bg-green-900/20 text-green-400 border border-green-500/30 backdrop-blur-sm">{session.status}</div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 p-4 bg-kali-800 rounded-lg border border-kali-700 shadow-sm">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 p-4 bg-gray-900/40 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg">
             <div className="space-y-1">
                 <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1"><IconTarget /> Target Scope</span>
                 <div className="font-mono text-sm text-kali-accent truncate" title={session.target}>{session.target}</div>
@@ -353,10 +356,10 @@ const SessionView = ({ session, onSendMessage, onTerminate, isStreaming, setting
             </div>
         </div>
 
-        <div className="flex gap-1 border-b border-kali-700 mt-4">
-          <button onClick={() => setActiveTab('terminal')} className={`px-4 py-2 text-sm font-medium flex items-center gap-2 border-b-2 ${activeTab === 'terminal' ? 'border-kali-accent text-white' : 'border-transparent text-gray-400'}`}><IconTerminal /> Console</button>
-          <button onClick={() => setActiveTab('artifacts')} className={`px-4 py-2 text-sm font-medium flex items-center gap-2 border-b-2 ${activeTab === 'artifacts' ? 'border-kali-accent text-white' : 'border-transparent text-gray-400'}`}><IconFolderOpen /> Artifacts</button>
-          <button onClick={() => setActiveTab('reports')} className={`px-4 py-2 text-sm font-medium flex items-center gap-2 border-b-2 ${activeTab === 'reports' ? 'border-kali-accent text-white' : 'border-transparent text-gray-400'}`}><IconDocumentText /> Reports</button>
+        <div className="flex gap-1 border-b border-white/10 mt-4">
+          <button onClick={() => setActiveTab('terminal')} className={`px-4 py-2 text-sm font-medium flex items-center gap-2 border-b-2 transition-all ${activeTab === 'terminal' ? 'border-kali-accent text-white drop-shadow-[0_0_10px_rgba(0,255,159,0.3)]' : 'border-transparent text-gray-400 hover:text-gray-300'}`}><IconTerminal /> Console</button>
+          <button onClick={() => setActiveTab('artifacts')} className={`px-4 py-2 text-sm font-medium flex items-center gap-2 border-b-2 transition-all ${activeTab === 'artifacts' ? 'border-kali-accent text-white drop-shadow-[0_0_10px_rgba(0,255,159,0.3)]' : 'border-transparent text-gray-400 hover:text-gray-300'}`}><IconFolderOpen /> Artifacts</button>
+          <button onClick={() => setActiveTab('reports')} className={`px-4 py-2 text-sm font-medium flex items-center gap-2 border-b-2 transition-all ${activeTab === 'reports' ? 'border-kali-accent text-white drop-shadow-[0_0_10px_rgba(0,255,159,0.3)]' : 'border-transparent text-gray-400 hover:text-gray-300'}`}><IconDocumentText /> Reports</button>
         </div>
       </div>
       {showMonitor && <SystemMonitor />}
@@ -386,8 +389,8 @@ const SessionView = ({ session, onSendMessage, onTerminate, isStreaming, setting
       </div>
 
        {showTerminateConfirm && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="bg-kali-800 rounded-lg border border-kali-700 p-6 max-w-sm w-full shadow-2xl">
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+          <div className="bg-gray-800 rounded-lg border border-white/10 p-6 max-w-sm w-full shadow-2xl">
             <h3 className="text-lg font-bold text-white mb-2">Stop Active Session?</h3>
             <p className="text-gray-400 text-sm mb-6">This will halt the active container and AI agent processes. You can view logs later, but cannot resume execution.</p>
             <div className="flex justify-end gap-3">
@@ -438,7 +441,7 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
             </div>
 
             {/* Tab Navigation */}
-            <div className="flex gap-1 border-b border-kali-700 mb-6">
+            <div className="flex gap-1 border-b border-white/10 mb-6">
                 <button 
                   onClick={() => setActiveTab('active')} 
                   className={`px-4 py-2 text-sm font-medium flex items-center gap-2 border-b-2 transition-colors ${activeTab === 'active' ? 'border-kali-accent text-white' : 'border-transparent text-gray-400 hover:text-gray-200'}`}
@@ -453,10 +456,10 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
                 </button>
             </div>
 
-             <div className="bg-kali-800 rounded-lg border border-kali-700 overflow-hidden shadow-xl">
+             <div className="bg-gray-900/50 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden shadow-2xl">
                 <table className="w-full text-left border-collapse">
                     <thead>
-                        <tr className="bg-kali-900 text-gray-400 text-xs uppercase tracking-wider border-b border-kali-700">
+                        <tr className="bg-black/20 text-gray-400 text-xs uppercase tracking-wider border-b border-white/10">
                             <th className="p-4 font-medium">Job ID</th>
                             <th className="p-4 font-medium">Session Name</th>
                             <th className="p-4 font-medium">Target</th>
@@ -467,13 +470,13 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
                             <th className="p-4 font-medium text-right">Actions</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-kali-700">
+                    <tbody className="divide-y divide-white/5">
                         {filteredSessions.map((s: PentestSession) => {
                             const mitreInfo = MITRE_DB[s.mitreId || ''];
                             return (
                             <tr 
                                 key={s.id} 
-                                className="hover:bg-kali-700/30 transition-colors cursor-pointer group"
+                                className="hover:bg-white/5 transition-colors cursor-pointer group"
                                 onClick={() => navigate(`/session/${s.id}`)}
                             >
                                 <td className="p-4 text-sm text-gray-500 font-mono text-xs">{s.id.substring(0,8)}</td>
@@ -492,9 +495,9 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
                                 <td className="p-4 text-sm text-gray-400 text-xs">{s.model}</td>
                                 <td className="p-4 text-sm">
                                     <span className={`px-2 py-1 rounded text-xs font-bold border ${
-                                        s.status === SessionStatus.RUNNING ? 'bg-green-900/20 text-green-400 border-green-900 animate-pulse' : 
-                                        s.status === SessionStatus.COMPLETED ? 'bg-blue-900/20 text-blue-400 border-blue-900' :
-                                        'bg-gray-700 text-gray-300 border-gray-600'
+                                        s.status === SessionStatus.RUNNING ? 'bg-green-900/20 text-green-400 border-green-500/30 animate-pulse' : 
+                                        s.status === SessionStatus.COMPLETED ? 'bg-blue-900/20 text-blue-400 border-blue-500/30' :
+                                        'bg-gray-700/50 text-gray-300 border-gray-600'
                                     }`}>
                                         {s.status}
                                     </span>
@@ -504,7 +507,7 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
                                     {s.status === SessionStatus.RUNNING && (
                                         <button 
                                             type="button"
-                                            className="p-1.5 rounded bg-kali-900 border border-kali-600 hover:border-red-500 hover:text-red-500 transition-colors text-gray-400"
+                                            className="p-1.5 rounded bg-black/40 border border-white/10 hover:border-red-500 hover:text-red-500 transition-colors text-gray-400"
                                             onClick={(e) => handleTerminate(e, s.id)}
                                             title="Stop Session"
                                         >
@@ -513,7 +516,7 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
                                     )}
                                     <button 
                                         type="button"
-                                        className="p-1.5 rounded bg-kali-900 border border-kali-600 hover:border-red-500 hover:text-red-500 transition-colors text-gray-400"
+                                        className="p-1.5 rounded bg-black/40 border border-white/10 hover:border-red-500 hover:text-red-500 transition-colors text-gray-400"
                                         onClick={(e) => handleDelete(e, s.id)}
                                         title="Delete Log"
                                     >
@@ -535,9 +538,18 @@ const SessionManager = ({ sessions, onDelete, onTerminate }: any) => {
 const Layout = ({ children }: { children?: React.ReactNode }) => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   return (
-    <div className="flex h-screen bg-kali-900 text-gray-200 overflow-hidden font-sans">
+    <div className="flex h-screen w-full bg-[#0a0a0f] text-gray-200 overflow-hidden font-sans relative selection:bg-kali-accent selection:text-black">
+      {/* Ambient Background Elements */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[120px] opacity-40 animate-pulse" />
+         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-emerald-900/10 rounded-full blur-[120px] opacity-30" />
+         <div className="absolute top-[20%] right-[20%] w-[20%] h-[20%] bg-blue-900/10 rounded-full blur-[80px] opacity-20" />
+         {/* Noise Overlay */}
+         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+      </div>
+      
       <Sidebar isCollapsed={isSidebarCollapsed} toggleSidebar={() => setIsSidebarCollapsed(!isSidebarCollapsed)} />
-      <main className="flex-1 flex flex-col min-w-0 overflow-hidden relative"><div className="flex-1 overflow-y-auto p-6 scroll-smooth">{children}</div></main>
+      <main className="flex-1 flex flex-col min-w-0 overflow-hidden relative z-10"><div className="flex-1 overflow-y-auto p-6 scroll-smooth">{children}</div></main>
     </div>
   );
 };
